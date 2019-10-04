@@ -8,20 +8,39 @@ export default {
       number: r.children[0].innerText,
       symbol: r.children[1].innerText,
       item: r.children[2].innerText
-    })).filter(r => r.symbol && r.item)
+    })).filter(r => r.symbol.trim() && r.item.trim())
 
     table.N = rows.map(r => ({
       number: r.children[0].innerText,
       symbol: r.children[3].innerText,
       item: r.children[4].innerText
-    })).filter(r => r.symbol && r.item)
+    })).filter(r => r.symbol.trim() && r.item.trim())
 
     table.I = rows.map(r => ({
       number: r.children[0].innerText,
       symbol: r.children[5].innerText,
       item: r.children[6].innerText
-    })).filter(r => r.item)
-
+    })).filter(r => r.item.trim())
+    let foundSymbols = []
+    table.AC = {}
+    table.A.forEach((v) => {
+      if (foundSymbols.indexOf(v.symbol) == -1) {
+        foundSymbols.push(v.symbol)
+        table.AC[v.symbol] = {item: v.item, symbol: v.symbol, count: 1}
+      } else {
+        table.AC[v.symbol].count += 1
+      }
+    })
+    foundSymbols = []
+    table.NC = {}
+    table.N.forEach((v) => {
+      if (foundSymbols.indexOf(v.symbol) == -1) {
+        foundSymbols.push(v.symbol)
+        table.NC[v.symbol] = {item: v.item, symbol: v.symbol, count: 1}
+      } else {
+        table.NC[v.symbol].count += 1
+      }
+    })
     let symbols = []
     symbols.push([...new Set(table.A.map(v => v.symbol))])
     symbols.push([...new Set(table.N.map(v => v.symbol))])

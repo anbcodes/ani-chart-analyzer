@@ -2,6 +2,8 @@
   <v-app>
     <v-app-bar app hide-on-scroll>
       <v-toolbar-title><span class="display-1">Google Docs ANI Chart Analyzer</span></v-toolbar-title>
+      <v-spacer />
+      <span class="title">Chart Format Available <a href="https://docs.google.com/document/d/1I8RF0tlCcFS58eMYk43Tbvs224opg221N7jTPqoHl3g/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Here</a></span>
     </v-app-bar>
     <v-content>
       <v-container>

@@ -112,14 +112,10 @@ export default {
   padding: 0.5in;
 }
 #ANI:empty::before {
-  content: 'Paste your table here';
+  content: 'Paste your ANI Chart here';
 }
 #summary {
   display: inline-block;
-  /* min-width: 8in;
-  min-height: 6in;
-  overflow-x: visible;
-  overflow-y: scroll; */
   box-shadow: rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   outline: none;
   background-color: white;

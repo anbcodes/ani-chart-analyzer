@@ -71,15 +71,19 @@ export default {
       let summary = []
       summary.push("Affirmative Summary:<br>")
       summary.push("<ul>")
+      let A = []
       Object.values(this.ANI.AC).forEach(e => {
-        summary.push(`<li>${e.item} (${e.symbol}): ${e.count}</li>`)
+        A.push(`<li>${e.item} (${e.symbol}): ${e.count}</li>`)
       })
+      summary = [...summary, ...A]
       summary.push("</ul><br>")
       summary.push("Negative Summary:<br>")
       summary.push("<ul>")
+      let N = []
       Object.values(this.ANI.NC).forEach(e => {
-        summary.push(`<li>${e.item} (${e.symbol}): ${e.count}</li>`)
+          N.push(`<li>${e.item} (${e.symbol}): ${e.count}</li>`)
       })
+      summary = [...summary, ...N]
       summary.push("</ul>")
       return summary.join("")
     },

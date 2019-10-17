@@ -24,21 +24,31 @@ export default {
     let foundSymbols = []
     table.AC = {}
     table.A.forEach((v) => {
-      if (foundSymbols.indexOf(v.symbol) == -1) {
-        foundSymbols.push(v.symbol)
-        table.AC[v.symbol] = {item: v.item, symbol: v.symbol, count: 1}
+      let hasM = v.symbol.search(/M/);
+      let newSymbol = v.symbol.replace("M", '')
+      if (foundSymbols.indexOf(newSymbol) == -1) {
+        foundSymbols.push(newSymbol)
+        table.AC[newSymbol] = {item: v.item, symbol: newSymbol, count: 1}
+      } else if (hasM === 1) {
+        table.AC[newSymbol].count += 1
+        table.AC[newSymbol].item = v.item
       } else {
-        table.AC[v.symbol].count += 1
+        table.AC[newSymbol].count += 1
       }
     })
     foundSymbols = []
     table.NC = {}
     table.N.forEach((v) => {
-      if (foundSymbols.indexOf(v.symbol) == -1) {
-        foundSymbols.push(v.symbol)
-        table.NC[v.symbol] = {item: v.item, symbol: v.symbol, count: 1}
+      let hasM = v.symbol.search(/M/)
+      let newSymbol = v.symbol.replace("M", '')
+      if (foundSymbols.indexOf(newSymbol) == -1) {
+        foundSymbols.push(newSymbol)
+        table.NC[newSymbol] = {item: v.item, symbol: newSymbol, count: 1}
+      } else if (hasM === 1) {
+        table.NC[newSymbol].count += 1
+        table.NC[newSymbol].item = v.item
       } else {
-        table.NC[v.symbol].count += 1
+        table.NC[newSymbol].count += 1
       }
     })
     let symbols = []
